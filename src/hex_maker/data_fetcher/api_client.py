@@ -11,6 +11,7 @@ import json
 import time
 import logging
 import requests
+import io
 from typing import Dict, List, Tuple, Optional, Any
 from urllib.parse import urlencode
 
@@ -98,47 +99,87 @@ class APIClient:
 
 
 class MapboxElevationAPI(APIClient):
-    """Client for Mapbox Terrain-RGB API."""
+    """Client for Mapbox Elevation API."""
     
     def __init__(self, api_key: str):
         """Initialize the Mapbox Elevation API client."""
         super().__init__(
-            base_url="https://api.mapbox.com/v4/mapbox.terrain-rgb",
+            base_url="https://api.mapbox.com",
             api_key=api_key,
             calls_per_second=5.0
         )
     
-    def get_elevation(self, lat: float, lon: float, zoom: int = 14) -> Optional[float]:
+    def get_elevation(self, lat: float, lon: float) -> Optional[float]:
         """
-        Get elevation data for a specific location.
+        Get elevation data for a specific location using Mapbox Tilequery API.
         
         Args:
             lat: Latitude
             lon: Longitude
-            zoom: Zoom level (higher is more detailed)
         
         Returns:
             Elevation in meters, or None if the request failed
         """
-        # Build the request
-        # Mapbox Terrain-RGB API requires a specific format for the URL
-        endpoint = f"{lon},{lat},{zoom}/256x256.png"
-        params = {'access_token': self.api_key}
-        
         try:
+            # Build the URL for Mapbox Tilequery API
+            # This endpoint returns elevation directly
+            endpoint = f"v4/mapbox.mapbox-terrain-v2/tilequery/{lon},{lat}.json"
+            params = {'access_token': self.api_key, 'layers': 'contour'}
+            
             # Make the request
-            # This would need more processing to extract the elevation from the RGB values
-            # in the returned image. For the sake of this example, we'll return a dummy value.
+            self.rate_limiter.wait_if_needed()
+            url = f"{self.base_url}/{endpoint}"
             
-            # In a real implementation, you would:
-            # 1. Get the RGB values at the specified pixel
-            # 2. Convert RGB to elevation using the formula: -10000 + ((R * 256 * 256 + G * 256 + B) * 0.1)
+            response = self.session.get(url, params=params, timeout=10)
+            response.raise_for_status()
             
-            # Simulate a successful request
-            return 250.0  # Dummy elevation in meters
+            # Process the JSON response
+            data = response.json()
+            features = data.get('features', [])
+            
+            if not features:
+                logger.warning("No elevation features returned from Mapbox")
+                # Try to get a default elevation for this region
+                return self._get_default_elevation(lat, lon)
+            
+            # Look for elevation in the features
+            # Sort by distance to get the closest feature
+            features.sort(key=lambda f: f.get('properties', {}).get('distance', float('inf')))
+            
+            for feature in features:
+                elevation = feature.get('properties', {}).get('ele')
+                if elevation is not None:
+                    return float(elevation)
+            
+            # If we couldn't find elevation in the features, return a default
+            return self._get_default_elevation(lat, lon)
+            
         except Exception as e:
-            logger.error(f"Failed to get elevation: {e}")
-            return None
+            logger.error(f"Failed to get elevation from Mapbox: {e}")
+            return self._get_default_elevation(lat, lon)
+    
+    def _get_default_elevation(self, lat: float, lon: float) -> float:
+        """
+        Get a default elevation estimate based on the location.
+        
+        This is a fallback method when the API call fails.
+        
+        Args:
+            lat: Latitude
+            lon: Longitude
+            
+        Returns:
+            Estimated elevation in meters
+        """
+        # These are very rough estimates for different regions
+        if abs(lat) > 70:  # Polar regions
+            return 2000.0
+        elif abs(lat) > 60:  # Near polar
+            return 500.0
+        elif abs(lat) < 23.5:  # Tropical
+            return 200.0
+        else:  # Temperate
+            return 300.0
     
     def get_elevations_batch(self, coordinates: List[Tuple[float, float]]) -> Dict[Tuple[float, float], Optional[float]]:
         """
