@@ -2,9 +2,9 @@
 
 ## Progress Tracker
 
-**Last Completed:** *Create project structure*  
-**Currently Working On:** *Setup virtual environment*  
-**On Deck:** *Install base dependencies*
+**Last Completed:** *Set up config file structure for API keys*  
+**Currently Working On:** *Choose hex coordinate system*  
+**On Deck:** *Implement core hex math functions*
 
 ---
 
@@ -12,9 +12,9 @@
 
 ### Setup & Environment
 - [x] Create project structure
-- [ ] Set up virtual environment
-- [ ] Install base dependencies (requirements.txt)
-- [ ] Set up config file structure for API keys
+- [x] Set up virtual environment
+- [x] Install base dependencies (requirements.txt)
+- [x] Set up config file structure for API keys
 
 ### 1. Hex Grid Generator
 - [ ] Choose hex coordinate system (axial/cube/offset)

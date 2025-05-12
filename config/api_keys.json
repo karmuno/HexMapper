@@ -1,0 +1,14 @@
+{
+    "elevation_api": {
+        "provider": "mapbox",
+        "key": "MAPBOX_API_KEY_HERE"
+    },
+    "climate_api": {
+        "provider": "openmeteo",
+        "key": "OPENMETEO_API_KEY_HERE"
+    },
+    "osm_api": {
+        "provider": "overpass",
+        "key": "NO_KEY_REQUIRED"
+    }
+}
