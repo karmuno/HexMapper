@@ -2,9 +2,9 @@
 
 ## Progress Tracker
 
-**Last Completed:** *Test hex grid with visual output*  
-**Currently Working On:** *Implement geodesic calculations for Hex Center Geocoder*  
-**On Deck:** *Create function to convert grid coordinates to lat/lon*
+**Last Completed:** *Implement geodesic calculations and coordinate conversion for Hex Center Geocoder*  
+**Currently Working On:** *Research and select APIs for Environmental Data Fetcher*  
+**On Deck:** *Implement API client functions*
 
 ---
 
@@ -23,10 +23,10 @@
 - [x] Test with visual output
 
 ### 2. Hex Center Geocoder
-- [ ] Implement geodesic calculations
-- [ ] Create function to convert grid coordinates to lat/lon
-- [ ] Implement bounding box calculations
-- [ ] Verify accuracy with test coordinates
+- [x] Implement geodesic calculations
+- [x] Create function to convert grid coordinates to lat/lon
+- [x] Implement bounding box calculations
+- [x] Verify accuracy with test coordinates
 
 ### 3. Environmental Data Fetcher
 - [ ] Research and select APIs for elevation data
