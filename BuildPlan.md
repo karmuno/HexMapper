@@ -2,9 +2,9 @@
 
 ## Progress Tracker
 
-**Last Completed:** *Terrain Classifier implementation with rules, thresholds and fuzzy classification*  
-**Currently Working On:** *Map Region Segmenter implementation*  
-**On Deck:** *Settlement Finder*
+**Last Completed:** *Map Region Segmenter with K-means clustering and contiguity enforcement*  
+**Currently Working On:** *Settlement Finder implementation*  
+**On Deck:** *Hex Map Renderer*
 
 ---
 
@@ -44,10 +44,10 @@
 - [x] Test with varied input data
 
 ### 5. Map Region Segmenter
-- [ ] Implement spatial partitioning algorithm
-- [ ] Create function to divide map into n regions
-- [ ] Ensure regions are contiguous
-- [ ] Visualize region boundaries for testing
+- [x] Implement K-means clustering algorithm
+- [x] Create function to divide map into n regions
+- [x] Ensure regions are contiguous
+- [x] Visualize region boundaries for testing
 
 ### 6. Settlement Finder
 - [ ] Set up OSM/Overpass API client
