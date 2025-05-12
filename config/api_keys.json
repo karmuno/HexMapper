@@ -1,7 +1,7 @@
 {
     "elevation_api": {
         "provider": "mapbox",
-        "key": "MAPBOX_API_KEY_HERE"
+        "key": "pk.eyJ1Ijoia2FybXVubyIsImEiOiJja2R0NHVmejMwbGdwMnlxc2E5ZHBic29rIn0.ofBuNotXN67OvDDyH36kqQ"
     },
     "climate_api": {
         "provider": "openmeteo",
