@@ -2,9 +2,9 @@
 
 ## Progress Tracker
 
-**Last Completed:** *Environmental Data Fetcher implementation with API clients and caching*  
-**Currently Working On:** *Define terrain classification rules for Terrain Classifier*  
-**On Deck:** *Implement classification algorithm*
+**Last Completed:** *Terrain Classifier implementation with rules, thresholds and fuzzy classification*  
+**Currently Working On:** *Map Region Segmenter implementation*  
+**On Deck:** *Settlement Finder*
 
 ---
 
@@ -37,11 +37,11 @@
 - [x] Test with sample coordinates
 
 ### 4. Terrain Classifier
-- [ ] Define terrain classification rules
-- [ ] Implement classification algorithm
-- [ ] Create threshold calibration function
-- [ ] Add fuzzy classification for border cases
-- [ ] Test with varied input data
+- [x] Define terrain classification rules
+- [x] Implement classification algorithm
+- [x] Create threshold calibration function
+- [x] Add fuzzy classification for border cases
+- [x] Test with varied input data
 
 ### 5. Map Region Segmenter
 - [ ] Implement spatial partitioning algorithm
