@@ -2,9 +2,9 @@
 
 ## Progress Tracker
 
-**Last Completed:** *Set up config file structure for API keys*  
-**Currently Working On:** *Choose hex coordinate system*  
-**On Deck:** *Implement core hex math functions*
+**Last Completed:** *Test hex grid with visual output*  
+**Currently Working On:** *Implement geodesic calculations for Hex Center Geocoder*  
+**On Deck:** *Create function to convert grid coordinates to lat/lon*
 
 ---
 
@@ -17,10 +17,10 @@
 - [x] Set up config file structure for API keys
 
 ### 1. Hex Grid Generator
-- [ ] Choose hex coordinate system (axial/cube/offset)
-- [ ] Implement core hex math functions
-- [ ] Create grid generator function with parameters
-- [ ] Test with visual output
+- [x] Choose hex coordinate system (axial/cube/offset)
+- [x] Implement core hex math functions
+- [x] Create grid generator function with parameters
+- [x] Test with visual output
 
 ### 2. Hex Center Geocoder
 - [ ] Implement geodesic calculations
