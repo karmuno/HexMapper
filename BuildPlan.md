@@ -2,9 +2,9 @@
 
 ## Progress Tracker
 
-**Last Completed:** *Implement geodesic calculations and coordinate conversion for Hex Center Geocoder*  
-**Currently Working On:** *Research and select APIs for Environmental Data Fetcher*  
-**On Deck:** *Implement API client functions*
+**Last Completed:** *Environmental Data Fetcher implementation with API clients and caching*  
+**Currently Working On:** *Define terrain classification rules for Terrain Classifier*  
+**On Deck:** *Implement classification algorithm*
 
 ---
 
@@ -29,12 +29,12 @@
 - [x] Verify accuracy with test coordinates
 
 ### 3. Environmental Data Fetcher
-- [ ] Research and select APIs for elevation data
-- [ ] Research and select APIs for climate data
-- [ ] Implement API client functions
-- [ ] Create data caching mechanism
-- [ ] Add error handling and rate limiting
-- [ ] Test with sample coordinates
+- [x] Research and select APIs for elevation data
+- [x] Research and select APIs for climate data
+- [x] Implement API client functions
+- [x] Create data caching mechanism
+- [x] Add error handling and rate limiting
+- [x] Test with sample coordinates
 
 ### 4. Terrain Classifier
 - [ ] Define terrain classification rules
